@@ -833,17 +833,46 @@ void onTorrentCompletenessChanged(tr_torrent* tor, tr_completeness status, bool 
                                                                                   options:UNNotificationCategoryOptionNone];
     [UNUserNotificationCenter.currentNotificationCenter setNotificationCategories:[NSSet setWithObject:categoryShow]];
     [UNUserNotificationCenter.currentNotificationCenter
-        requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge)
-                      completionHandler:^(BOOL /*granted*/, NSError* _Nullable error) {
-                          if (error.code > 0)
-                          {
-                              NSLog(@"UserNotifications not configured: %@", error.localizedDescription);
-                          }
-                      }];
+     requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge)
+     completionHandler:^(BOOL /*granted*/, NSError* _Nullable error) {
+        if (error.code > 0)
+        {
+            NSLog(@"UserNotifications not configured: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)windowWillClose:(NSNotification*)notification
+{
+    //[NSApp setPresentationOptions:NSApplicationPresentation];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+}
+
+- (void)menuAction:(id)sender {
+    [self showMainWindow:NSApp];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
+    [NSApp setPresentationOptions:NSApplicationPresentationDefault];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
+
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+    //[_statusItem button].image = [NSImage imageNamed:@"ToolbarAppTemplate"];
+    NSImage* img = [NSImage imageNamed:@"MenuBar"];
+    [[_statusItem button] setImage:img];
+    [_statusItem setHighlightMode:YES];
+    [_statusItem setVisible:YES];
+    [_statusItem setEnabled:YES];
+    _statusItem.action = @selector(menuAction:);
+
+    //_statusMenu = [NSMenu new];
+    //[_statusMenu addItemWithTitle: @"Quit Transmission" action:@selector(terminate:) keyEquivalent:@""];
+    //_statusItem.menu = appMenu;
+
     //cover our asses
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"WarningLegal"])
     {

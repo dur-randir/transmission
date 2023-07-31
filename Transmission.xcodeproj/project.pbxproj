@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -793,7 +793,7 @@
 		4DE5CCA50980735700BE280E /* Badger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Badger.h; sourceTree = "<group>"; };
 		4DE5CCA60980735700BE280E /* Badger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Badger.mm; sourceTree = "<group>"; };
 		4DE5CCCA0981D9BE00BE280E /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
-		4DF0C5A90899190500DD8943 /* Controller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Controller.mm; sourceTree = "<group>"; };
+		4DF0C5A90899190500DD8943 /* Controller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Controller.mm; sourceTree = "<group>"; usesTabs = 1; };
 		4DF0C5AA0899190500DD8943 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		4DFBC2DD09C0970D00D5C571 /* Torrent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Torrent.h; sourceTree = "<group>"; };
 		4DFBC2DE09C0970D00D5C571 /* Torrent.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Torrent.mm; sourceTree = "<group>"; };
@@ -4096,6 +4096,7 @@
 					.,
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(inherited)",
 					"-fmodules",
@@ -4170,6 +4171,7 @@
 				INFOPLIST_PREFIX_HEADER = libtransmission/version.h;
 				INFOPLIST_PREPROCESS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14.6;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DFMT_HEADER_ONLY",

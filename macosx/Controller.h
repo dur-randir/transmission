@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, AddType) { //
 - (IBAction)openURLShowSheet:(id)sender;
 
 @property(nonatomic, readonly) tr_session* sessionHandle;
+@property(nonatomic, strong) NSStatusItem* statusItem;
 
 - (IBAction)createFile:(id)sender;
 
@@ -174,6 +175,7 @@ typedef NS_ENUM(NSUInteger, AddType) { //
 - (void)updateForExpandCollapse;
 
 - (IBAction)showMainWindow:(id)sender;
+- (void)menuAction:(id)sender;
 
 - (IBAction)toggleQuickLook:(id)sender;
 
